@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <script src="/js/all.min.js" async></script>
+  <title>Unity WebGL Player | Adventure</title>
+  <script src="Build/UnityLoader.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #231F20;
+    }
+
+    #unityContainer {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PXHK7Q7G3Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PXHK7Q7G3Z');
+</script>
+  <script>
+    window.addEventListener("load", () => {
+      UnityLoader.instantiate("unityContainer", "Build/bog.json");
+    });
+  </script>
+</head>
+<body>
+  <div id="unityContainer"></div>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html><html lang="en">
+<head>
+	<script src="/js/all.min.js" async></script>
+    <title>The Circle - Simple but Challenging Circle Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Only 10% can past level 1 and only 1% can past level 2! Would you accept a challenge?">
+    <meta name="keywords" content="circle game, hardest game, funny game, html5 game, pwa, game, games">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#000000">
+    <meta property="og:url" content="https://the-circle.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The Circle" />
+    <meta property="og:description" content="Only 10% can past level 1 and only 1% can past level 2! Would you accept a challenge?" />
+	<meta property="og:image" content="https://the-circle.app/img/shareLogo1.jpg" />
+	<meta property="og:image:secure_url" content="https://the-circle.app/img/shareLogo1.jpg" /> 
+	<meta property="og:image:width" content="1200" /> 
+	<meta property="og:image:height" content="630" />
+	<meta name="flattr:id" content="d7dv3n">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="img/ico72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="img/ico96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="img/ico144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="img/ico192.png">
+	<script src="main.js"></script>
+	<link rel="icon" type="image/png" href="img/ico48.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="img/ico72.png" sizes="72x72">
+    <link rel="icon" type="image/png" href="img/ico96.png" sizes="96x96">
+	<style>	
+	    @import url(https://fonts.googleapis.com/css?family=Baloo);
+		html {
+			height:100%;
+		}
+		body {
+			margin: 0px;
+			touch-action:none;
+			user-select: none;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+			 height:100%;
+			 -webkit-transition: background-color 2s ease;
+			 transition: background-color 2s ease;
+		}		
+		#game {	
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100vw;
+			height:100%;
+		}		
+		#info {
+		  font-family: Baloo;
+		  margin-top: 2vh;
+		  text-align: center;
+		  font-size: 7vh;
+		  height: 13vh;
+		  width : 45vh;
+		  max-width : 90vw;
+		  margin: auto;
+		}
+		#content {
+		  height: 67vh;
+		  width : 45vh;
+		  max-height: 134vw;
+		  max-width : 90vw;
+		  margin: auto;
+		}		
+		#highScore {
+		  color: #000000;
+		  font-size: 3vh;
+		  display: block;
+		}		
+		#points {
+		  height: 8vh;
+		  display: block;
+		}
+		canvas {
+			width:100%;
+			height:100%;
+		}		
+		#touchicon {
+			position: absolute;
+			top: 63vh;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			width: 15vh;
+			height: 15vh;
+		}
+		#menuicon {
+			position: absolute;
+			top: 3vh;
+			left: 4vw;
+			width: 7vh;
+			height: 7vh;
+		}
+		#shareicon {
+			position: absolute;
+			top: 60vh;
+			left: 4vw;
+			width: 7vh;
+			height: 7vh;
+			display: none;
+		}
+		#volume {
+			position: absolute;
+			top: 3vh;
+			right: 4vw;
+			width: 7vh;
+			height: 7vh;
+		}
+		#rateicon {
+			position: absolute;
+			top: 60vh;
+			right: 4vw;
+			width: 9vh;
+			height: 9vh;
+			display: none;
+		}
+		#volumeofficon {
+			display: none;
+		}		
+		#menuPage {
+			display: none;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100vw;
+			height: 100%;
+		}		
+		#levels {
+			font-family: Baloo;
+			padding-top: 6vh;
+			text-align: center;
+			margin: auto;
+		}		
+		#levelsSvg{
+			height: 45vh;
+			width : 45vh;
+			max-height: 95vw;
+			max-width : 95vw;
+		}		
+		#level2text,#level3text,#level4text,#level5text,#level6text,#level7text,#level8text,#level9text{
+			display: none;
+		}
+		#back, #close{
+			display: block;
+			padding-top: 5vh;
+			text-align: center;
+			width: 10vh;
+			height: 10vh;
+			margin: auto;
+		}
+		#closeInfo, #closeFinish{
+			display: block;
+			padding-top: 1vh;
+			text-align: center;
+			width: 10vh;
+			height: 10vh;
+			margin: auto;
+		}
+		#coffee {
+			display: block;
+			padding-top: 3vh;
+			text-align: center;
+			width: 45vh;
+			height: 10vh;
+			max-width: 95vw;
+			margin: auto;
+			font-size: 4vh;
+		}
+		#coffee a:link {
+			color: black;
+		}
+		#coffee a:visited {
+			color: black;
+		}
+		#finishPage a:link {
+			color: #ff813f;
+			font-size: 3.3vh;
+		}
+		#finishPage a:visited {
+			color: #ff813f;
+			font-size: 3.3vh;
+		}
+		.clickable {
+			cursor: pointer;
+		}
+		#coffee svg {
+			width: 5vh;
+			height: 5vh;
+		}
+		#ba_money, #ba_rich, #ba_laugh, #ba_friends, #ba_snakelogic{
+			text-align: center;
+			margin: auto;
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			display: none;
+			z-index: 200;
+		}
+		img {
+			width: 100%;
+			max-width: 60vh;
+		}
+		#unlock {
+			text-decoration: underline;
+		}
+		#unlockForm {
+			position: absolute;
+			top:0px;
+			left:0px;
+			background-color: #000000;
+			display: none;
+			text-align: center;
+			margin: auto;
+			font-family: Baloo;
+			bottom: 0px;
+			width: 100%;
+			height: 100%;
+			font-size: 3vh;
+			opacity: 0;
+			-webkit-transition: opacity 1.4s ease;
+			transition: opacity 1.4s ease;
+		}
+		#unlockForm input{
+			width: 3vh;
+			height: 3vh;
+			margin: 2vh;
+		}
+		#infoPage, #finishPage{
+			background-color: #000000;
+			font-family: Baloo;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100vw;
+			min-height: 100%;
+			color:white;
+			font-size: 2.7vh;
+			text-align: center;
+			margin: auto;
+			opacity: 0;
+			display: none;
+			-webkit-transition: opacity 1.4s ease;
+			transition: opacity 1.4s ease;	
+			user-select: text;
+			-moz-user-select: text;
+			-webkit-user-select: text;
+			-ms-user-select: text;
+		}
+		.infoPageCo{		 
+			padding-top:4vh;
+			padding-right:6vw;
+			padding-left:6vw;
+		}
+		.gap{
+		   margin-bottom:2vh;
+		}	
+		.orange{
+			color: #ff813f;
+		}
+		.white{
+			color: #ffffff;
+		}
+		.link {
+			cursor: pointer;
+			font-size: 3.3vh;
+			text-decoration: underline;
+		}
+		#linkCopy{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div id="game">
+		<div id="info">
+		  <span id="points"></span>
+		  <span id="highScore"></span>
+		</div>
+		<div id="content"></div>
+		<svg id="touchicon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15vh" height="15vh" viewBox="0 0 24 24"><defs><path id="a" d="M0 0h24v24H0V0z"/></defs><clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath><path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z" clip-path="url(#b)"/></svg>
+		<svg class = "clickable" id="menuicon" xmlns="http://www.w3.org/2000/svg" width="7vh" height="7vh" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M4 18h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zm0-5h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1zM3 7c0 .55.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1z"/></svg>
+		<div class = "clickable" id="volume">
+			<svg id="volumeonicon" xmlns="http://www.w3.org/2000/svg" width="7vh" height="7vh" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+			<svg id="volumeofficon" xmlns="http://www.w3.org/2000/svg" width="7vh" height="7vh" viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+		</div>
+		<svg class = "clickable" id="shareicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="7vh" height="7vh"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+		<div id="ba_money">
+			<a target="_blank" href="https://fastmoneyonline.netlify.app/"><img id ="mo" src="img/money.png"></a>
+		</div>
+		<div id="ba_rich">
+			<a target="_blank" href="https://www.buymeacoffee.com/mJMI3zC"><img src="img/rich.png"></a>
+		</div>
+		<div id="ba_laugh">
+			<a target="_blank" href="https://laughforfree.netlify.app/"><img src="img/laugh.png"></a>
+		</div>
+		<div id="ba_friends">
+			<a target="_blank" href="https://friendfinder.netlify.app/"><img src="img/friends.png"></a>
+		</div>
+		<div id="ba_snakelogic">
+			<a target="_blank" href="https://snakelogic.com"><img src="img/snakelogic.png"></a>
+		</div>
+	</div>
+	<div id="menuPage">
+		<div id="levels">
+			<svg id="levelsSvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="45vh" height="45vh" viewBox="0 0 90 90">
+				<defs>
+					<g id="lock">
+						<g fill="none"><path d="M0 0h24v24H0V0z"/><path d="M0 0h24v24H0V0z"/></g><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+						<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+					</g>
+				</defs>
+				<g transform = "translate(5,0)">
+					<g>
+						<g id="level1">
+							<g id="level1text"  class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls1" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level1rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+						</g>
+						<g id="level2" transform = "translate(28,0)">
+							<g id="level2text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls2" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level2rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level2lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+						<g id="level3" transform = "translate(56,0)">
+							<g id="level3text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls3" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level3rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level3lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+					</g>
+					<g transform = "translate(0,28)">
+						<g id="level4">
+							<g id="level4text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls4" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level4rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level4lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+						<g id="level5" transform = "translate(28,0)">
+							<g id="level5text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls5" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level5rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level5lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+						<g id="level6" transform = "translate(56,0)">
+							<g id="level6text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls6" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level6rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level6lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+					</g>
+					<g transform = "translate(0,56)">
+						<g id="level7">
+							<g id="level7text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls7" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level7rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level7lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+						<g id="level8" transform = "translate(28,0)">
+							<g id="level8text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls8" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level8rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level8lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+						<g id="level9" transform = "translate(56,0)">
+							<g id="level9text" class = "clickable">
+								<text text-anchor="middle">
+									<tspan id ="ls9" x="12" y="14" style="font-size:12px;overflow:visible;">0</tspan>
+								</text>
+								<rect x="0" y="0" style="opacity:0.0;" width="24" height="24"/>
+								<rect x="0" y="20" style="fill:#000000;" width="24" height="2"/>
+								<rect id="level9rect" x="0" y="20" style="opacity:0.85;fill:#FFFFFF;" width="0" height="2"/>
+							</g>
+							<g id="level9lock">
+								<use xlink:href="#lock"/>
+							</g>
+						</g>
+					</g>
+					<g id="unlock" class = "clickable">
+						<text text-anchor="middle">
+							<tspan x="40" y="88" style="font-size:5px;overflow:visible;">Unlock the next level</tspan>
+						</text>
+					</g>
+				</g>
+			</svg>
+			<div id="coffee" class = "clickable">
+				<svg xmlns="http://www.w3.org/2000/svg" width="5vh" height="5vh" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+					<a target="_blank" href="https://www.buymeacoffee.com/mJMI3zC"><span>Buy me a coffee</span></a>
+				<svg xmlns="http://www.w3.org/2000/svg" width="5vh" height="5vh" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>	
+			</div>					
+			<svg id="back" class = "clickable" xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24"><path opacity=".87" fill="none" d="M0 0h24v24H0V0z"/><path d="M16.62 2.99c-.49-.49-1.28-.49-1.77 0L6.54 11.3c-.39.39-.39 1.02 0 1.41l8.31 8.31c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.38 12l7.25-7.25c.48-.48.48-1.28-.01-1.76z"/></svg>
+		</div>
+	</div>
+	<div id ="unlockForm" class="white">
+		<div style="font-size:5vh;margin-top:10vh;"><span>Please choose</span></div>
+		<div style="font-size:5vh;margin-bottom:7vh;"><span>an option</span></div>
+		<div>
+			<label class="orange"><input id="un1" type="checkbox" name="free" value="Free">For free</label>
+		</div>
+		<div>	
+			<label class="orange"><input id="un2" type="checkbox" name="pay" value="Pay">I am willing to pay for it</label>
+		</div>
+		<div style="font-size:4vh;margin:5vh 3vw 0px 3vw;">
+			<span id="textCheck"></span>
+		</div>
+		<svg id="close" class = "clickable" xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#ff813f" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
+	</div>
+	<div id="infoPage">
+		<div class="infoPageCo">
+			<div>
+				<span>This game was written to become the most popular game of all time.</span>
+			</div>
+			<div class="gap">
+				<span>The odds are against it because of </span>
+				<span class="orange">Crappy Graphics</span>
+				<span>, </span><span class="orange">Insanely Hard Levels</span>
+				<span>, etc. </span>
+			</div>
+			<div>
+				<span>To overcome these disadvantages we need your help.</span>
+			</div>
+			<div class="gap">
+				<span>Are you ready to participate in </span><span class="orange">the world’s biggest</span><span> social experiment?</span>
+			</div>
+			<div>
+				<span>If so, please follow this golden rule: </span>
+			</div>		
+			<div class="gap">
+				<span class="orange link share">Share this game!</span>
+			</div>
+			<div class="gap">
+				<span>Thanks</span>
+			</div>
+			<div id="linkCopy" class="gap">
+				<div>https://the-circle.app</div>
+				<div>
+					<span id="copyText" class="orange link">Copy Link</span>
+				</div>
+			</div>			
+			<div style="margin-top:3.5vh;">
+			<svg id="closeInfo" class = "clickable" xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#ff813f" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
+			</div>
+		</div>
+	</div>
+	<div id="finishPage">
+		<div class="infoPageCo">
+			<div>
+				<span>There are no more levels because I didn't expect anyone to be as good as you are.</span>
+			</div>
+			<div class="gap">
+				<span>So Congratulation You have finished the game!</span>
+			</div>
+			<div>
+				<span>If you need more challenges please try </span>
+			</div>
+			<div>
+				<a target="_blank" href="https://snakelogic.com"><span>Snake Logic</span></a>
+			</div>
+			<div class="gap">
+				<span>one of the hardest game ever!</span>
+			</div>
+			<div style="margin-top:3.5vh;">
+			<svg id="closeFinish" class = "clickable" xmlns="http://www.w3.org/2000/svg" width="10vh" height="10vh" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#ff813f" d="M18.3 5.71c-.39-.39-1.02-.39-1.41 0L12 10.59 7.11 5.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41L10.59 12 5.7 16.89c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 13.41l4.89 4.89c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4z"/></svg>
+			</div>
+		</div>
+	</div>
+	<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+	<script>
+	  var firebaseConfig = {
+		apiKey: "AIzaSyBtw1mjqCJgXb-WUxaYenQGyo7HNWhIopA",
+		authDomain: "the-circle-2fccf.firebaseapp.com",
+		databaseURL: "https://the-circle-2fccf.firebaseio.com",
+		projectId: "the-circle-2fccf",
+		storageBucket: "the-circle-2fccf.appspot.com",
+		messagingSenderId: "984798450704",
+		appId: "1:984798450704:web:3cca8ba825fe3434652695",
+		measurementId: "G-KF4E2TFF2Y"
+	  };
+	  // Initialize Firebase
+	  firebase.initializeApp(firebaseConfig);
+	</script>
+</body>
+</html>

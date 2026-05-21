@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <script src="/js/all.min.js" async></script>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Traffic Jam 3D</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="UnityProgress.js"></script>
+    <script src="UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build.json", {onProgress: UnityProgress,Module:{onRuntimeInitialized: function() {UnityProgress(gameInstance, "complete")}}});
+    </script>
+
+</head>
+<body>
+    <div class="webgl-content">
+        <div id="gameContainer" style="width: 900px; height: 600px; margin: auto"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Turbo Racing 3</title>
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="/js/all.min.js" async></script>
+	<script type="text/javascript">
+	function InitLanguage(){
+		SendMessage ('MiniclipApiManager', 'MAPI_InitLanguage', 'en');
+	}
+	function InitMiniclipApi(){
+		SendMessage ('MiniclipApiManager', 'MAPI_Ready', '');
+	}
+	function SaveHighscore(score, level, levelName, screenshot){SendMessage ('MiniclipApiManager', 'MAPI_Enabled', 'true');}
+	function ShowHighscores(level, levelName, screenshot){SendMessage ('MiniclipApiManager', 'MAPI_HighscoresClose', 'true');}
+	</script>
+
+  </head>
+  <body class="template">
+    <div class="template-wrap clear">
+      <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="510px" width="680px" tabindex="1"></canvas>
+    </div>
+    <script type='text/javascript'>
+  var Module = {
+    TOTAL_MEMORY: 268435456,
+    errorhandler: function(err, url, line){alert('Error while loading game. Update your browser and try again. If error still exist, try play in another browser.'); return true;},
+    compatibilitycheck: null,
+    dataUrl: "Release/WebGL.datagz",
+    codeUrl: "Release/WebGL.jsgz",
+    memUrl: "Release/WebGL.memgz",
+  };
+</script>
+<script src="Release/UnityLoader.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Fish Rescue - a game by Bruno Croci</title>
+
+  <script src="/js/all.min.js" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Spicy+Rice&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.min.js"
+      integrity="sha512-K+cPWcoDCr2JFFfe912LrvRUQbVJuWNfeWK5r/HrmpDs8ELrsjVib8Fs5oAxzu76fG66ajGhDLvvcxBbeEzl9g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="start"><p>Click to Play</p></div>
+    <canvas id="game" width="1280" height="768"></canvas>
+    <div id="game_view"></div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script type="text/javascript" src="src/jsfxr.js"></script>
+    <script type="text/javascript" src="src/utils.js"></script>
+    <script type="text/javascript" src="src/input.js"></script>
+    <script type="text/javascript" src="src/math.js"></script>
+    <script type="text/javascript" src="src/data.js"></script>
+    <script type="text/javascript" src="src/particles.js"></script>
+    <script type="text/javascript" src="src/bumper.js"></script>
+    <script type="text/javascript" src="src/cage.js"></script>
+    <script type="text/javascript" src="src/gravitator.js"></script>
+    <script type="text/javascript" src="src/camera.js"></script>
+    <script type="text/javascript" src="src/fish.js"></script>
+    <script type="text/javascript" src="src/game_map.js"></script>
+    <script type="text/javascript" src="src/game.js"></script>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="SHORTCUT ICON" href="favicon.ico" />
+<title>Succubox</title>
+
+
+    <script src="/js/all.min.js" async></script>
+
+</head>
+
+<body>
+	<div id='main'>
+	<div id='root' class='root'></div>
+	<div id='footer' class='footer'>
+		<div>Version 1.0.1</div>
+		<div style='text-align:center;'>Game by <a href="http://tylerglaiel.com">Tyler Glaiel</a>, 2017<br><font size=1>(Yes, this is how games used to be back in the year 2017)</font></div>
+		<div> <a href="https://twitter.com/tylerglaiel" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @tylerglaiel</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</div>
+		<div id="givemoney" style='display:none;'><div class='button' onClick='alertCANCEL("GIVE ME MONEY",paypalbuttons)'>Give Me Money</div></div>
+		<div><div class='button' onClick='ResetPrompt()'>Reset Save</div></div>
+	</div>
+	</div>
+
+
+	<div id='overlays' class='overlays'></div>
+	
+	<div id='jail' class='jail'  style='display:none;'><div class='jailcont'>
+		<div class='jailtitle'>JAIL</div>
+		<div id='jailtime' class='jailtime'>Time Left:</div>
+	</div></div>
+	
+	
+	<div id='popup' class='popup' style='display:none;' >
+	<div id='popupcont' class='popupcont'>
+	<div id='popupheader' class='popupheader'>I'M A POPUP!</div>
+	<div id='popupcontent' class='popupcontent'>
+
+	</div>
+	<div id='popupfooter' class='popupfooter'></div>
+	</div>
+	</div>
+
+
+	<div id='win' class='wincont' style='display:none;'><div class='winmsg'>
+		<div class='winlabel'>Fulfillment:&nbsp<span id='wininc' class='wininc'>0</span></div>
+		<div id='thanku' class='thanku'>Thanks for playing!</div>
+	</div></div>
+	
+	<div id='ghost' class='ghost'><div id='ghostinner' class='ghostinner'></div></div>
+	
+	
+</body>
+
+
+<script type="text/javascript" src="elements.js"></script>
+<script type="text/javascript" src="resources.js"></script>
+<script type="text/javascript" src="lootdrops.js"></script>
+<script type="text/javascript" src="shop.js"></script>
+<script type="text/javascript" src="crafting.js"></script>
+<script type="text/javascript" src="saves.js"></script>
+<script type="text/javascript" src="gameevents.js"></script>
+<script type="text/javascript" src="combat.js"></script>
+<script type="text/javascript" src="company.js"></script>
+
+<script type="text/javascript" src="main.js"></script>
+
+
+

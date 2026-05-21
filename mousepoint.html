@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" oncontextmenu="return false">
+<head>
+<script src="/js/all.min.js" async></script>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="mouse, point, mousepoint, exponential, incremental, idle, casual, ctg, Creative Tech Guy, Jason O'Neill">
+	<meta name="description" content="Move your mouse to earn points and upgrade in MousePoint.">
+	<meta name="author" content="Jason O'Neill">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>MousePoint</title>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="apple-mobile-web-app-title" content="MousePoint">
+	<meta name="application-name" content="MousePoint">
+	<meta name="theme-color" content="#ffffff">
+
+	<meta property="og:title" content="MousePoint">
+	<meta property="og:type" content="website">
+	<meta property="og:locale" content="en_US">
+	<meta property="og:url" content="https://creativetechguy.com/mousepoint">
+	<meta property="og:description" content="Move your mouse to earn points and upgrade in MousePoint.">
+	<meta property="og:image" content="https://creativetechguy.com/images/mousepoint%20image.png">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@JasonONeillCTG">
+	<meta name="twitter:title" content="MousePoint">
+	<meta name="twitter:description" content="Move your mouse to earn points and upgrade in MousePoint.">
+	<meta name="twitter:image" content="https://creativetechguy.com/images/mousepoint%20image.png">
+
+	<link rel="stylesheet" href="global/fontawesome/css/fontawesome-all.min.css?v=1552844678400">
+	<link rel="stylesheet" href="global/css/games.css?v=1555270979150" type="text/css">
+
+	<link rel="stylesheet" href="mousepoint/styles.css?v=1552844678478" type="text/css">
+
+</head>
+<body class="background">
+	<canvas id="canvas"></canvas>
+	<div class="center">
+		<h1>MousePoint</h1>
+		<h3 id="pointsHeader" class="background">
+			Points: <span id="points">0</span><br>
+			Points Per Second: <span id="pointsPerSecond">0</span>
+		</h3>
+		<br>
+		<br>
+		<h1 id="milestoneAchieved" style="display: none;">Milestone Achieved!</h1>
+		<h1 id="shopExpanded" style="display: none;">New Item Added to Shop!</h1>
+		<br>
+		<div id="shop" class="background" style="display: none;">
+			<span class="title">Shop</span>
+			<table>
+				<tbody id="shopTable">
+				</tbody>
+			</table>
+		</div>
+		<div id="stats" class="background" style="display: none;">
+			<span class="title">Stats</span>
+			<table>
+				<tbody id="statsTable">
+				</tbody>
+			</table>
+		</div>
+		<div id="gameOver" class="background" style="display: none;">
+			<div>
+				<h1>You won in <span id="gameTime"></span> and earned <span id="gamePoints"></span> points!</h1>
+				<h2>I hope you had fun. I have many more unique games to play.</h2>
+				<h2>Click Below!</h2>
+				<br>
+				<br>
+				<a href="/webgames" id="homeLogo" title="Back to Web Games">
+					<img src="images/logo.png" style="width: 100px; height: 100px;" alt="More Games">
+				</a>
+			</div>
+		</div>
+	</div>
+	<div style="pointer-events: none;">
+		<p style="font-size: 10px; margin-bottom: 5px; color: #000000; position:absolute; bottom:0px; width: 100%; text-align: center;">
+			Copyright <span id="copyrightYear"></span> Jason O'Neill
+		</p>
+		<script>
+			document.getElementById("copyrightYear").innerText = new Date().getFullYear();
+		</script>
+	</div>
+	<script src="mousepoint/utilities.js?v=1552844678360"></script>
+	<script src="mousepoint/script.js?v=1723879969420"></script>
+	<noscript>
+		<div class="error-popup-container">
+			<p class="error-popup-message">This page, along with all of my other web games and utilities, require JavaScript.<br>Please enable JavaScript in your browser and refresh to continue.</p>
+		</div>
+	</noscript>
+</body>
+</html>
